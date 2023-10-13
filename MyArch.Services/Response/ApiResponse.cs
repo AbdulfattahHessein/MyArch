@@ -1,43 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using MyArch.Core.Interfaces.ApiResponse;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MyArch.Services.Response
+namespace MyArch.BusinessLogic.Response
 {
-    public class ApiResponse<T> //: Response, IResponse<T>
+    public class ApiResponse<T> : ApiResponse, IApiResponse<T>
     {
         public ApiResponse()
         {
 
         }
-        public ApiResponse(T data, string? message = null)
+        public ApiResponse(T data, string? meta = null)
         {
-            Succeeded = true;
-            Message = message;
             Data = data;
-        }
-        public ApiResponse(string message)
-        {
-            Succeeded = false;
-            Message = message;
-        }
-        public ApiResponse(string message, bool succeeded)
-        {
-            Succeeded = succeeded;
-            Message = message;
+            Meta = meta;
         }
 
+        public new T? Data { get; set; }
+    }
+    public class ApiResponse : IApiResponse
+    {
         public HttpStatusCode StatusCode { get; set; }
-        public T? Data { get; set; } = default(T);
         public object? Meta { get; set; }
-        public bool Succeeded { get; set; }
-        public string? Message { get; set; }
-        public List<string>? Errors { get; set; }
+        public bool Succeeded => (int)StatusCode >= 200 && (int)StatusCode <= 290;
+        public Dictionary<string, List<string>>? Errors { get; set; }
+        public object? Data { get; set; }
 
-        //public Dictionary<string, List<string>> ErrorsBag { get; set; }
     }
 
 }

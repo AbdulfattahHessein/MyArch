@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyArch.Core\MyArch.Core.csproj" />
-    <ProjectReference Include="..\MyArch.Services\MyArch.Services.csproj" />
+    <ProjectReference Include="..\MyArch.Services\MyArch.BusinessLogic.csproj" />
   </ItemGroup>
 
 </Project>

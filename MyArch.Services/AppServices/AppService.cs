@@ -1,16 +1,13 @@
 ﻿using AutoMapper;
+using MyArch.BusinessLogic.Intefaces;
 using MyArch.Core.Interfaces.Bases;
 
-namespace MyArch.Services.AppServices
+namespace MyArch.BusinessLogic.AppServices
 {
-    public class AppService
+    public class AppService : IAppService
     {
-        #region Vars
-        protected IUnitOfWork UnitOfWork { get; set; }
-        protected readonly IMapper Mapper;
-        #endregion
-
-        #region CTR
+        public IUnitOfWork UnitOfWork { get; set; }
+        public IMapper Mapper { get; set; }
         public AppService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             UnitOfWork = unitOfWork;
@@ -21,6 +18,6 @@ namespace MyArch.Services.AppServices
         {
             UnitOfWork.Dispose();
         }
-        #endregion
+
     }
 }

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using MyArch.BusinessLogic.Dtos;
 using MyArch.Core.Entities;
-using MyArch.Services.Dtos;
 
-namespace MyArch.Services.Mapping
+namespace MyArch.BusinessLogic.Mapping
 {
     public class MappingProfile : Profile
     {

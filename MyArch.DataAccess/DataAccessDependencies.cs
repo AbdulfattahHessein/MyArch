@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using MyArch.Core.Interfaces.Bases;
 using MyArch.DataAccess.Bases;
 
@@ -7,13 +9,13 @@ namespace MyArch.DataAccess
     public static class DataAccessDependencies
     {
 
-        public static IServiceCollection AddDataAccessDependencies(this IServiceCollection services)
+        public static IServiceCollection AddDataAccessDependencies(this IServiceCollection services, IConfiguration configuration)
         {
-
-            // Configration of automapper
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+            });
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-
             return services;
         }
     }

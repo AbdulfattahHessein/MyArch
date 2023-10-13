@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyArch.Core", "MyArch.Core\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyArch.DataAccess", "MyArch.DataAccess\MyArch.DataAccess.csproj", "{76A05E9E-A138-49CD-9639-BABF5253BB0F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyArch.Services", "MyArch.Services\MyArch.Services.csproj", "{DC141126-ADAE-4FC7-AA33-2AE9DFAC66C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyArch.BusinessLogic", "MyArch.Services\MyArch.BusinessLogic.csproj", "{DC141126-ADAE-4FC7-AA33-2AE9DFAC66C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

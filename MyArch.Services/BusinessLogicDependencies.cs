@@ -1,17 +1,16 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using MyArch.Services.AppServices;
-using MyArch.Services.Intefaces;
+using MyArch.BusinessLogic.AppServices;
+using MyArch.BusinessLogic.Intefaces;
 using System.Reflection;
 
-namespace MyArch.Services
+namespace MyArch.BusinessLogic
 {
-    public static class ServicesDependencies
+    public static class BusinessLogicDependencies
     {
-        public static IServiceCollection AddServicesDependencies(this IServiceCollection services)
+        public static IServiceCollection AddBusinessLogicDependencies(this IServiceCollection services)
         {
             services.AddScoped<IProductsService, ProductsService>();
 
-            // Configration of automapper
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 

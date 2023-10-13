@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyArch.Services.Intefaces;
-using SchoolProject.Api.Baises;
+using MyArch.Api.Bases;
+using MyArch.BusinessLogic.Intefaces;
+using MyArch.Core.Entities;
 
 namespace MyArch.Api.Controllers
 {
@@ -17,6 +18,14 @@ namespace MyArch.Api.Controllers
         public async Task<IActionResult> GetAllProducts()
         {
             var response = await _productsService.GetAllProducts();
+
+            return ApiResult(response);
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddProduct(Product product)
+        {
+            var response = await _productsService.CreateProduct(product);
 
             return ApiResult(response);
 

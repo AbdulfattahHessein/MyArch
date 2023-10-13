@@ -1,6 +1,6 @@
-using Microsoft.EntityFrameworkCore;
+using MyArch.BusinessLogic;
+using MyArch.BusinessLogic.Middlewares;
 using MyArch.DataAccess;
-using MyArch.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,16 +12,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
+builder.Services.AddDataAccessDependencies(builder.Configuration);
 
-builder.Services.AddDataAccessDependencies();
-
-builder.Services.AddServicesDependencies();
+builder.Services.AddBusinessLogicDependencies();
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionHandlerMiddleware>();
 
 
 // Configure the HTTP request pipeline.
