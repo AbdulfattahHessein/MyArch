@@ -30,7 +30,6 @@ namespace MyArch.BusinessLogic.AppServices
 
             var result = Mapper.Map<ProductDto>(product);
 
-
             return Success(result);
         }
         public async Task<IApiResponse<List<ProductDto>>> GetAllProducts()

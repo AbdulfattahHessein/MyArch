@@ -19,11 +19,11 @@ namespace MyArch.BusinessLogic.Response
     }
     public class ApiResponse : IApiResponse
     {
+        public object? Data { get; set; }
+        public bool Succeeded => (int)StatusCode >= 200 && (int)StatusCode <= 290;
         public HttpStatusCode StatusCode { get; set; }
         public object? Meta { get; set; }
-        public bool Succeeded => (int)StatusCode >= 200 && (int)StatusCode <= 290;
         public Dictionary<string, List<string>>? Errors { get; set; }
-        public object? Data { get; set; }
 
     }
 

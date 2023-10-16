@@ -34,7 +34,8 @@ namespace MyArch.BusinessLogic.Middlewares
 
                 if (exception is ValidationException ex)
                 {
-                    var responseResult = new ApiResponse() { StatusCode = HttpStatusCode.Forbidden };
+                    var responseResult = new ApiResponse() { StatusCode = (HttpStatusCode)httpStatusCode };
+
 
                     var errors = new Dictionary<string, List<string>>();
                     foreach (var error in ex.Errors)
@@ -59,7 +60,7 @@ namespace MyArch.BusinessLogic.Middlewares
         {
             int httpStatusCode = exception switch
             {
-                var _ when exception is ValidationException => (int)HttpStatusCode.Forbidden,
+                var _ when exception is ValidationException => (int)HttpStatusCode.UnprocessableEntity,
                 _ => (int)HttpStatusCode.InternalServerError
 
             };
